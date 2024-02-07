@@ -48,3 +48,23 @@ button:hover {
 #weatherData h2, #weatherData p {
     margin: 10px 0;
 }
+.weather-card {
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    background-size: cover;
+    color: #fff;
+    text-shadow: 2px 2px 4px #000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.weather-card:hover {
+    transform: scale(1.05);
+}
+
+.weather-card h2, .weather-card p {
+    margin: 10px 0;
+}
