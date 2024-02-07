@@ -4,58 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta del Tiempo</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-image: url('https://source.unsplash.com/1600x900/?weather');
-            background-size: cover;
-            color: #333;
-            text-align: center;
-        }
-
-        h1 {
-            color: #fff;
-            text-shadow: 2px 2px 4px #000;
-        }
-
-        input[type="text"] {
-            padding: 10px;
-            margin: 20px 0;
-            width: 80%;
-            max-width: 400px;
-            border: none;
-            border-radius: 5px;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        #weatherData {
-            background-color: rgba(255, 255, 255, 0.8);
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 500px;
-        }
-
-        #weatherData h2, #weatherData p {
-            margin: 10px 0;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Consulta del Tiempo</h1>
@@ -63,29 +12,6 @@
     <button onclick="getWeather()">Obtener Tiempo</button>
     <div id="weatherData"></div>
 
-    <script>
-        function getWeather() {
-            const apiKey = 'ec2dfe4241917575e3450de026c9cd8b';
-            const city = document.getElementById('cityInput').value;
-            const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    const weatherData = `
-                        <h2>${data.name}</h2>
-                        <p>Temperatura: ${data.main.temp} °C</p>
-                        <p>Descripción: ${data.weather[0].description}</p>
-                        <p>Humedad: ${data.main.humidity}%</p>
-                        <p>Velocidad del viento: ${data.wind.speed} m/s</p>
-                    `;
-                    document.getElementById('weatherData').innerHTML = weatherData;
-                })
-                .catch(error => {
-                    console.error('Error al obtener el clima:', error);
-                    document.getElementById('weatherData').innerHTML = 'Error al obtener el clima. Por favor, intenta de nuevo.';
-                });
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
