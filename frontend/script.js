@@ -26,7 +26,7 @@ function getWeather() {
 }
 
 function getWeatherImage(weatherMain) {
-    switch(weatherMain.toLowerCase()) {
+    switch (weatherMain.toLowerCase()) {
         case 'clear':
             return 'https://source.unsplash.com/1600x900/?clear-sky';
         case 'clouds':
@@ -40,4 +40,32 @@ function getWeatherImage(weatherMain) {
         default:
             return 'https://source.unsplash.com/1600x900/?weather';
     }
+}
+
+document.getElementById('getClothingRecommendationButton').addEventListener('click', getClothingRecommendation);
+
+function getClothingRecommendation() {
+    const city = document.getElementById('cityInput').value;
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ec2dfe4241917575e3450de026c9cd8b&units=metric`)
+        .then(response => response.json())
+        .then(data => {
+            // Extraer la temperatura actual
+            const temp = data.main.temp;
+            // Llamar al backend con la temperatura actual para obtener recomendaciones de ropa
+            fetch(`/recommendations?temp=${temp}`)
+                .then(response => response.json())
+                .then(data => {
+                    const recommendationsDiv = document.getElementById('recommendations');
+                    recommendationsDiv.innerHTML = '';
+                    data.recommendations.forEach(item => {
+                        const p = document.createElement('p');
+                        p.textContent = `${item.type}: ${item.description}`;
+                        recommendationsDiv.appendChild(p);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        })
+        .catch(error => {
+            console.error('Error al obtener el clima:', error);
+        });
 }
