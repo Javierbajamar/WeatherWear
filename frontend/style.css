@@ -68,3 +68,39 @@ button:hover {
 .weather-card h2, .weather-card p {
     margin: 10px 0;
 }
+/* Media queries */
+@media (max-width: 768px) {
+    input[type="text"], button {
+        width: 90%;
+    }
+
+    .weather-card {
+        width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .weather-card h2 {
+        font-size: 1.4em;
+    }
+
+    .weather-card p {
+        font-size: 1em;
+    }
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}

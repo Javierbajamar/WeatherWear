@@ -7,11 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Consulta del Tiempo</h1>
-    <input type="text" id="cityInput" placeholder="Introduce el nombre de la ciudad">
-    <button onclick="getWeather()">Obtener Tiempo</button>
-    <div id="weatherData"></div>
 
-    <script src="script.js"></script>
+<div class="container">
+    <h1>Consulta del Tiempo</h1>
+    <div class="input-group">
+        <input type="text" id="cityInput" placeholder="Introduce el nombre de la ciudad">
+        <button onclick="getWeather()">Obtener Tiempo</button>
+    </div>
+    <div id="weatherData"></div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
